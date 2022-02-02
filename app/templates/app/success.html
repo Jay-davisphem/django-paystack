@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% load static %} 
+{% block otherH %}
+<link rel="stylesheet" href="{% static 'css/success.css' %}" /> 
+{% endblock %}
+{% block content %}
+<div id="box">
+  <img id="success-icon" src="{% static 'images/check.png' %}" />
+  <h4>Thanks for contributing ${{ amount }}!</h4>
+  <p>May you be blessed with abundance of good things :)</p>
+  <hr />
+  <a class="btn" href="{% url 'index' %}">&#2198; Back to donation page</a>
+</div>
+{% endblock %}

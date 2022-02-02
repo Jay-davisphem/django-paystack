@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div id="container">
+  <div class="column-6">
+    <div id="right-wrapper">
+      <img class="coffee-cup" src="{% static 'images/Coffee5.png' %}" />
+      <img class="coffee-cup2" src="{% static 'images/Coffee10.png' %}" />
+      <img class="coffee-cup3" src="{% static 'images/Coffee25.png' %}" />
+      <h3 class="h3">
+        If I've provided you with value please consider supporting our efforts
+        ;)
+      </h3>
+      <hr />
+      <a
+        href="https://github.com/jay-davisphem/django-paystack"
+        target="_blank"
+        class="myButton"
+        >Check out my repo</a
+      >
+    </div>
+  </div>
+  <div class="column-6">
+    <div id="left-wrapper">
+      <img id="profile-pic" src="{% static 'images/femi.jpg' %}" />
+      <div id="left-wrapper-header">
+        <h3>Send us Gifts!</h3>
+        <h5>One Time Donation</h5>
+      </div>
+      <div style="clear: left"></div>
+      <hr />
+      <!-- Add form here -->
+      <form action="{% url 'deduct' %}" id="payment-form">
+        <!-- Elements will create form elements here -->
+        {% csrf_token %}
+        <div class="form-field-12">
+          <label for="amount">Enter Amount:</label>
+          <br />
+          <br />
+          <input name="amount" id="amount" list="amu" required />
+          <datalist id="amu">
+            <select required name="amount" id="amount">
+              <option selected value="5">
+                $5 --- Here's a coffee, on me :)
+              </option>
+              <option value="10">
+                $10 --- You helped me, so I am going to help you
+              </option>
+              <option value="25">$25 --- I love your channel!</option>
+            </select>
+          </datalist>
+        </div>
+
+        <div class="form-field-6">
+          <input required type="text" name="email" placeholder="Email..." />
+        </div>
+
+        <div class="form-field-6">
+          <input
+            required
+            type="text"
+            name="nickname"
+            placeholder="Nickname..."
+          />
+        </div>
+
+        <div class="form-row">
+          <label for="card-element"> Credit or debit card </label>
+          <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
+          </div>
+
+          <!-- Used to display form errors. -->
+          <div id="card-errors" role="alert"></div>
+        </div>
+
+        <div style="clear: left"></div>
+        <hr />
+
+        <input
+          class="myButton"
+          style="background-color: #344055"
+          type="submit"
+          value="Submit Payment"
+          name=""
+        />
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
